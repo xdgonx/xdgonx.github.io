@@ -4580,11 +4580,20 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.IsHost,
 		C3.Plugins.Text.Acts.AppendText,
 		C3.Plugins.System.Acts.SetGroupActive,
+		C3.Plugins.List.Acts.AddItem,
+		C3.Plugins.Multiplayer.Exps.MyAlias,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingLeftRoom,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingDisconnected,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingError,
 		C3.Plugins.Multiplayer.Exps.ErrorMessage,
+		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
+		C3.Plugins.TextBox.Acts.SetText,
+		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
+		C3.Plugins.Multiplayer.Exps.FromAlias,
+		C3.Plugins.Multiplayer.Exps.Message,
+		C3.Plugins.Multiplayer.Exps.FromID,
+		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.TextBox.Acts.AppendText,
 		C3.Plugins.TextBox.Acts.ScrollToBottom,
 		C3.Plugins.TextBox.Acts.SetEnabled,
@@ -4592,12 +4601,17 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.List.Acts.SetEnabled,
 		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Multiplayer.Exps.PeerAlias,
-		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected
+		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected,
+		C3.Plugins.System.Cnds.For,
+		C3.Plugins.List.Exps.ItemCount,
+		C3.Plugins.List.Cnds.CompareTextAt,
+		C3.Plugins.System.Exps.loopindex,
+		C3.Plugins.List.Acts.Remove
 	];
 };
 self.C3_JsPropNameTable = [
 	{Chat: 0},
-	{ChatText: 0},
+	{SendMessage: 0},
 	{Send: 0},
 	{Users: 0},
 	{Info: 0},
@@ -4619,7 +4633,7 @@ self.C3_JsPropNameTable = [
 
 self.InstanceType = {
 	Chat: class extends self.ITextInputInstance {},
-	ChatText: class extends self.ITextInputInstance {},
+	SendMessage: class extends self.ITextInputInstance {},
 	Send: class extends self.IButtonInstance {},
 	Users: class extends self.IListInstance {},
 	Info: class extends self.ITextInstance {},
@@ -4760,14 +4774,23 @@ self.C3_ExpressionFuncs = [
 		},
 		() => " Роль: Хост",
 		() => "Host",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0() + " (Хост)");
+		},
 		() => " Роль: Пир",
 		() => "Peer",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0();
+		},
 		() => "Вы покинули комнату...",
 		() => "Вы отключились от чата...",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => ("Произошла ошибка: " + f0());
 		},
+		() => "chat",
 		() => "Common",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4781,6 +4804,11 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => ("Чат покинул " + f0());
+		},
+		() => "Remove user",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 1);
 		}
 ];
 
