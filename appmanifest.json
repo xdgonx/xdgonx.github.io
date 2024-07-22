@@ -1,6 +1,6 @@
 {
-	"name": "UniqueUnitsMuliplayerLern",
-	"short_name": "UniqueUnitsMuliplayerLern",
+	"name": "UniUniLearn",
+	"short_name": "UniUniLearn",
 	"description": "",
 	"start_url": "index.html",
 	"display": "fullscreen",
@@ -37,6 +37,5 @@
 			"sizes": "512x512",
 			"type": "image/png"
 		}
-	],
-	"screenshots": []
+	]
 }
