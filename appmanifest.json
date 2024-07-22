@@ -1,6 +1,6 @@
 {
-	"name": "UniUniLearn",
-	"short_name": "UniUniLearn",
+	"name": "UniqueUnitsBattle",
+	"short_name": "UniqueUnitsBattle",
 	"description": "",
 	"start_url": "index.html",
 	"display": "fullscreen",
@@ -37,5 +37,6 @@
 			"sizes": "512x512",
 			"type": "image/png"
 		}
-	]
+	],
+	"screenshots": []
 }
