@@ -4577,11 +4577,22 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Acts.SignallingJoinRoom,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingJoinedRoom,
 		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.Multiplayer.Cnds.IsHost,
+		C3.Plugins.Text.Acts.AppendText,
+		C3.Plugins.System.Acts.SetGroupActive,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.Multiplayer.Cnds.OnSignallingLeftRoom,
+		C3.Plugins.Multiplayer.Cnds.OnSignallingDisconnected,
+		C3.Plugins.Multiplayer.Cnds.OnSignallingError,
+		C3.Plugins.Multiplayer.Exps.ErrorMessage,
 		C3.Plugins.TextBox.Acts.AppendText,
 		C3.Plugins.TextBox.Acts.ScrollToBottom,
 		C3.Plugins.TextBox.Acts.SetEnabled,
 		C3.Plugins.Button.Acts.SetEnabled,
-		C3.Plugins.List.Acts.SetEnabled
+		C3.Plugins.List.Acts.SetEnabled,
+		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
+		C3.Plugins.Multiplayer.Exps.PeerAlias,
+		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4735,7 +4746,7 @@ self.C3_ExpressionFuncs = [
 		() => "Авторизация прошла успешно...",
 		() => "Solve",
 		() => "Master",
-		() => "SolveMasterChat",
+		() => "Chat",
 		() => 0,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4743,15 +4754,31 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (((("Логин: " + v0.GetValue()) + " ") + "Комната: ") + "SolveMasterChat");
+			return () => (((("Логин: " + v0.GetValue()) + " ") + "Комната: ") + "Chat");
 		},
+		() => " Роль: Хост",
 		() => "Host",
+		() => " Роль: Пир",
 		() => "Peer",
+		() => "Вы покинули комнату...",
+		() => "Вы отключились от чата...",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => ("Произошла ошибка: " + f0());
+		},
 		() => "Common",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
 			return () => ((((("[" + v0.GetValue()) + "]") + ": ") + v1.GetValue()) + "\n");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => ("В чат вошел " + f0());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => ("Чат покинул " + f0());
 		}
 ];
 
