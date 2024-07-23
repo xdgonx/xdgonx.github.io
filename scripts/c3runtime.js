@@ -4091,6 +4091,51 @@ err)}}};
 
 {
 self["C3_Shaders"] = {};
+self["C3_Shaders"]["bulge"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform lowp sampler2D samplerFront;\nuniform mediump vec2 srcOriginStart;\nuniform mediump vec2 srcOriginEnd;\nuniform mediump float radius;\nuniform mediump float scale;\nvoid main(void)\n{\nmediump vec2 srcOriginSize = srcOriginEnd - srcOriginStart;\nmediump vec2 tex = (vTex - srcOriginStart) / srcOriginSize;\nmediump float dist = distance(vec2(0.5, 0.5), tex);\ntex -= vec2(0.5, 0.5);\nif (dist < radius)\n{\nmediump float percent = 1.0 - ((radius - dist) / radius) * scale;\npercent = percent * percent;\ntex = tex * percent;\n}\ntex += vec2(0.5, 0.5);\ntex = clamp(tex, 0.0, 1.0);\t\t\t// ensure no sampling outside source rect\ntex = (tex * srcOriginSize) + srcOriginStart;\t// convert back relative to source rect\ngl_FragColor = texture2D(samplerFront, tex);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\nstruct ShaderParams {\nradius : f32,\nscale : f32\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%C3PARAMS_STRUCT%%\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar tex : vec2<f32> = c3_srcOriginToNorm(input.fragUV);\nvar dist : f32 = distance(vec2<f32>(0.5, 0.5), tex);\ntex = tex - 0.5;\nif (dist < shaderParams.radius)\n{\nvar percent : f32 = 1.0 - ((shaderParams.radius - dist) / shaderParams.radius) * shaderParams.scale;\npercent = percent * percent;\ntex = tex * percent;\n}\ntex = tex + 0.5;\ntex = c3_clamp2(tex, 0.0, 1.0);\t\t// ensure no sampling outside source rect\ntex = c3_normToSrcOrigin(tex);\t\t// convert back relative to source rect\nvar output : FragmentOutput;\noutput.color = textureSample(textureFront, samplerFront, tex);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: false,
+	extendBoxHorizontal: 0,
+	extendBoxVertical: 0,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: false,
+	supports3dDirectRendering: false,
+	animated: false,
+	parameters: [["radius",0,"percent"],["scale",0,"percent"]]
+};
+self["C3_Shaders"]["blurhorizontal"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform mediump sampler2D samplerFront;\nuniform mediump vec2 pixelSize;\nuniform mediump float intensity;\nvoid main(void)\n{\nmediump vec4 sum = vec4(0.0);\nmediump float pixelWidth = pixelSize.x;\nmediump float halfPixelWidth = pixelWidth / 2.0;\nsum += texture2D(samplerFront, vTex - vec2(pixelWidth * 7.0 + halfPixelWidth, 0.0)) * 0.06;\nsum += texture2D(samplerFront, vTex - vec2(pixelWidth * 5.0 + halfPixelWidth, 0.0)) * 0.10;\nsum += texture2D(samplerFront, vTex - vec2(pixelWidth * 3.0 + halfPixelWidth, 0.0)) * 0.13;\nsum += texture2D(samplerFront, vTex - vec2(pixelWidth * 1.0 + halfPixelWidth, 0.0)) * 0.16;\nmediump vec4 front = texture2D(samplerFront, vTex);\nsum += front * 0.10;\nsum += texture2D(samplerFront, vTex + vec2(pixelWidth * 1.0 + halfPixelWidth, 0.0)) * 0.16;\nsum += texture2D(samplerFront, vTex + vec2(pixelWidth * 3.0 + halfPixelWidth, 0.0)) * 0.13;\nsum += texture2D(samplerFront, vTex + vec2(pixelWidth * 5.0 + halfPixelWidth, 0.0)) * 0.10;\nsum += texture2D(samplerFront, vTex + vec2(pixelWidth * 7.0 + halfPixelWidth, 0.0)) * 0.06;\ngl_FragColor = mix(front, sum, intensity);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\nstruct ShaderParams {\nintensity : f32\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar pixelWidth : f32 = c3_getPixelSize(textureFront).x;\nvar front : vec4<f32> = textureSample(textureFront, samplerFront, input.fragUV);\nvar sum : vec4<f32> =\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(pixelWidth * 7.5, 0.0)) * 0.06 +\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(pixelWidth * 5.5, 0.0)) * 0.10 +\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(pixelWidth * 3.5, 0.0)) * 0.13 +\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(pixelWidth * 1.5, 0.0)) * 0.16 +\nfront * 0.10 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(pixelWidth * 1.5, 0.0)) * 0.16 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(pixelWidth * 3.5, 0.0)) * 0.13 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(pixelWidth * 5.5, 0.0)) * 0.10 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(pixelWidth * 7.5, 0.0)) * 0.06;\nvar output : FragmentOutput;\noutput.color = mix(front, sum, shaderParams.intensity);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: false,
+	extendBoxHorizontal: 8,
+	extendBoxVertical: 0,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: false,
+	supports3dDirectRendering: false,
+	animated: false,
+	parameters: [["intensity",0,"percent"]]
+};
+self["C3_Shaders"]["blurvertical"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform mediump sampler2D samplerFront;\nuniform mediump vec2 pixelSize;\nuniform mediump float intensity;\nvoid main(void)\n{\nmediump vec4 sum = vec4(0.0);\nmediump float pixelHeight = pixelSize.y;\nmediump float halfPixelHeight = pixelHeight / 2.0;\nsum += texture2D(samplerFront, vTex - vec2(0.0, pixelHeight * 7.0 + halfPixelHeight)) * 0.06;\nsum += texture2D(samplerFront, vTex - vec2(0.0, pixelHeight * 5.0 + halfPixelHeight)) * 0.10;\nsum += texture2D(samplerFront, vTex - vec2(0.0, pixelHeight * 3.0 + halfPixelHeight)) * 0.13;\nsum += texture2D(samplerFront, vTex - vec2(0.0, pixelHeight * 1.0 + halfPixelHeight)) * 0.16;\nmediump vec4 front = texture2D(samplerFront, vTex);\nsum += front * 0.10;\nsum += texture2D(samplerFront, vTex + vec2(0.0, pixelHeight * 1.0 + halfPixelHeight)) * 0.16;\nsum += texture2D(samplerFront, vTex + vec2(0.0, pixelHeight * 3.0 + halfPixelHeight)) * 0.13;\nsum += texture2D(samplerFront, vTex + vec2(0.0, pixelHeight * 5.0 + halfPixelHeight)) * 0.10;\nsum += texture2D(samplerFront, vTex + vec2(0.0, pixelHeight * 7.0 + halfPixelHeight)) * 0.06;\ngl_FragColor = mix(front, sum, intensity);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\nstruct ShaderParams {\nintensity : f32\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar pixelHeight : f32 = c3_getPixelSize(textureFront).y;\nvar front : vec4<f32> = textureSample(textureFront, samplerFront, input.fragUV);\nvar sum : vec4<f32> =\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(0.0, pixelHeight * 7.5)) * 0.06 +\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(0.0, pixelHeight * 5.5)) * 0.10 +\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(0.0, pixelHeight * 3.5)) * 0.13 +\ntextureSample(textureFront, samplerFront, input.fragUV - vec2<f32>(0.0, pixelHeight * 1.5)) * 0.16 +\nfront * 0.10 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(0.0, pixelHeight * 1.5)) * 0.16 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(0.0, pixelHeight * 3.5)) * 0.13 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(0.0, pixelHeight * 5.5)) * 0.10 +\ntextureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(0.0, pixelHeight * 7.5)) * 0.06;\nvar output : FragmentOutput;\noutput.color = mix(front, sum, shaderParams.intensity);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: false,
+	extendBoxHorizontal: 0,
+	extendBoxVertical: 8,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: false,
+	supports3dDirectRendering: false,
+	animated: false,
+	parameters: [["intensity",0,"percent"]]
+};
 
 }
 
@@ -4455,29 +4500,32 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Sprite.Acts.SetSize,
+		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.System.Cnds.Every,
-		C3.Plugins.Text.Acts.Destroy,
-		C3.Plugins.Text.Acts.SetText,
-		C3.Plugins.Arr.Exps.CurValue,
-		C3.Plugins.Arr.Acts.SetXY,
-		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Exps.Width,
-		C3.Plugins.Sprite.Exps.Height
+		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Arr.Acts.SetXY,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.System.Cnds.Every,
+		C3.Plugins.Text.Acts.Destroy,
+		C3.Plugins.Arr.Exps.CurValue
 	];
 };
 self.C3_JsPropNameTable = [
 	{TextMassiv: 0},
 	{o_sBackground: 0},
 	{o_sPlayerNickButt: 0},
-	{o_sPlayerImage: 0},
+	{o_sPlayerImageHost: 0},
 	{o_sMap: 0},
 	{o_tNameLeft: 0},
 	{o_tNameRight: 0},
@@ -4504,7 +4552,13 @@ self.C3_JsPropNameTable = [
 	{o_sCardBig: 0},
 	{o_FakeBackground: 0},
 	{s_visual: 0},
+	{o_sCount: 0},
+	{o_tCountFigurHost: 0},
+	{o_tCountFigurPeer: 0},
+	{o_sPlayerImagePeer: 0},
 	{ButtonWork: 0},
+	{FigurHost: 0},
+	{FigurPeer: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0}
@@ -4514,7 +4568,7 @@ self.InstanceType = {
 	TextMassiv: class extends self.ITextInstance {},
 	o_sBackground: class extends self.ISpriteInstance {},
 	o_sPlayerNickButt: class extends self.ISpriteInstance {},
-	o_sPlayerImage: class extends self.ISpriteInstance {},
+	o_sPlayerImageHost: class extends self.ISpriteInstance {},
 	o_sMap: class extends self.ISpriteInstance {},
 	o_tNameLeft: class extends self.ITextInstance {},
 	o_tNameRight: class extends self.ITextInstance {},
@@ -4537,7 +4591,11 @@ self.InstanceType = {
 	o_sCardLittle: class extends self.ISpriteInstance {},
 	o_sCardBig: class extends self.ISpriteInstance {},
 	o_FakeBackground: class extends self.ISpriteInstance {},
-	s_visual: class extends self.ISpriteInstance {}
+	s_visual: class extends self.ISpriteInstance {},
+	o_sCount: class extends self.ISpriteInstance {},
+	o_tCountFigurHost: class extends self.ITextInstance {},
+	o_tCountFigurPeer: class extends self.ITextInstance {},
+	o_sPlayerImagePeer: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4675,6 +4733,12 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpObject() + 10);
 		},
 		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
+		},
+		() => 10,
+		() => 2,
+		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
 		},
@@ -4682,11 +4746,20 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (486 + (n0.ExpInstVar() * 124));
 		},
-		() => "Обновление Цифр в Массиве",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => v0.GetValue();
-		},
+		() => "Выбор фигуры для действия или движения",
+		() => "ShetonyPodsvetka",
+		() => 388,
+		() => 1723,
+		() => 691,
+		() => 3,
+		() => 4,
+		() => 540,
+		() => "Создание большой карты",
+		() => 0.1,
+		() => "Card",
+		() => 900,
+		() => 1008,
+		() => 1408,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (7 - v0.GetValue());
@@ -4695,8 +4768,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * (-1));
 		},
-		() => 3,
-		() => 10,
 		() => -1,
 		p => {
 			const n0 = p._GetNode(0);
@@ -4706,18 +4777,8 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 1);
 		},
-		() => "ShetonyPodsvetka",
-		() => 388,
-		() => 1723,
-		() => 688,
-		() => 2,
-		() => 4,
-		() => 540,
-		() => 0.1,
-		() => "Card",
-		() => 900,
-		() => 1008,
-		() => 1408
+		() => "Тест",
+		() => "Обновление Цифр в Массиве"
 ];
 
 
