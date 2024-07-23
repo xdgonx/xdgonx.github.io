@@ -4440,6 +4440,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
+		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.System.Exps.choose,
@@ -4457,14 +4458,19 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.Touch.Cnds.OnDoubleTapGestureObject,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.Text.Acts.Destroy,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Arr.Exps.CurValue,
 		C3.Plugins.Arr.Acts.SetXY,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.Else
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Touch.Cnds.OnTapGesture,
+		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.System.Acts.SetBoolVar,
+		C3.Plugins.Sprite.Exps.Width,
+		C3.Plugins.Sprite.Exps.Height
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4490,6 +4496,15 @@ self.C3_JsPropNameTable = [
 	{o_sButtonEndHod: 0},
 	{Sheton: 0},
 	{o_sButtonOtmena: 0},
+	{s_FiguraDvisn: 0},
+	{s_FiguraDeistv: 0},
+	{o_ShetonSveshenie: 0},
+	{o_sButtonOtmena2: 0},
+	{o_sCardLittle: 0},
+	{o_sCardBig: 0},
+	{o_FakeBackground: 0},
+	{s_visual: 0},
+	{ButtonWork: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0}
@@ -4514,7 +4529,15 @@ self.InstanceType = {
 	AJAX: class extends self.IInstance {},
 	o_ArrayPeer: class extends self.IArrayInstance {},
 	o_sButtonEndHod: class extends self.ISpriteInstance {},
-	o_sButtonOtmena: class extends self.ISpriteInstance {}
+	o_sButtonOtmena: class extends self.ISpriteInstance {},
+	s_FiguraDvisn: class extends self.ISpriteInstance {},
+	s_FiguraDeistv: class extends self.ISpriteInstance {},
+	o_ShetonSveshenie: class extends self.ISpriteInstance {},
+	o_sButtonOtmena2: class extends self.ISpriteInstance {},
+	o_sCardLittle: class extends self.ISpriteInstance {},
+	o_sCardBig: class extends self.ISpriteInstance {},
+	o_FakeBackground: class extends self.ISpriteInstance {},
+	s_visual: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4659,7 +4682,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (486 + (n0.ExpInstVar() * 124));
 		},
-		() => "Удаление Жетона С Поля",
 		() => "Обновление Цифр в Массиве",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4683,7 +4705,19 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 1);
-		}
+		},
+		() => "ShetonyPodsvetka",
+		() => 388,
+		() => 1723,
+		() => 688,
+		() => 2,
+		() => 4,
+		() => 540,
+		() => 0.1,
+		() => "Card",
+		() => 900,
+		() => 1008,
+		() => 1408
 ];
 
 
