@@ -4489,6 +4489,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.System.Exps.choose,
+		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Arr.Cnds.CompareXY,
 		C3.Plugins.Arr.Exps.CurX,
@@ -4508,13 +4509,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
@@ -4568,12 +4569,15 @@ self.C3_JsPropNameTable = [
 	{s_okrushen: 0},
 	{s_zahvats_okrushen: 0},
 	{o_sPlenPeer: 0},
+	{o_tCountMeshok: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
 	{FigurPeer: 0},
 	{plenHost: 0},
 	{plenPeer: 0},
+	{MeshokPeer: 0},
+	{MeshokHost: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -4619,7 +4623,8 @@ self.InstanceType = {
 	o_sPlenHost: class extends self.ISpriteInstance {},
 	s_okrushen: class extends self.ISpriteInstance {},
 	s_zahvats_okrushen: class extends self.ISpriteInstance {},
-	o_sPlenPeer: class extends self.ISpriteInstance {}
+	o_sPlenPeer: class extends self.ISpriteInstance {},
+	o_tCountMeshok: class extends self.ITextInstance {}
 }
 }
 
@@ -4805,6 +4810,10 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 90);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and(v0.GetValue(), "/20");
 		},
 		() => "Выбор фигуры для действия или движения",
 		() => "ShetonyPodsvetka",
