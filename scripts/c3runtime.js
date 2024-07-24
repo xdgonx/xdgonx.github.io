@@ -4518,11 +4518,11 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
+		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
-		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.System.Acts.SetBoolVar,
@@ -4585,6 +4585,8 @@ self.C3_JsPropNameTable = [
 	{GameOver: 0},
 	{o_FakeBackgroundEndGame: 0},
 	{o_sButtonRestart: 0},
+	{o_sInvisibleFugr: 0},
+	{s_Glaz: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4645,7 +4647,9 @@ self.InstanceType = {
 	o_ListFigurPeer: class extends self.IArrayInstance {},
 	GameOver: class extends self.ISpriteInstance {},
 	o_FakeBackgroundEndGame: class extends self.ISpriteInstance {},
-	o_sButtonRestart: class extends self.ISpriteInstance {}
+	o_sButtonRestart: class extends self.ISpriteInstance {},
+	o_sInvisibleFugr: class extends self.ISpriteInstance {},
+	s_Glaz: class extends self.ISpriteInstance {}
 }
 }
 
