@@ -4482,14 +4482,16 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
+		C3.Plugins.Arr.Acts.Shuffle,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
-		C3.Plugins.System.Exps.choose,
+		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
+		C3.Plugins.Arr.Acts.Pop,
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Arr.Cnds.CompareXY,
 		C3.Plugins.Arr.Exps.CurX,
@@ -4513,20 +4515,25 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
+		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
-		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Arr.Acts.SetXY,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.Text.Acts.Destroy,
-		C3.Plugins.Arr.Exps.CurValue
+		C3.Plugins.Arr.Exps.CurValue,
+		C3.Plugins.Text.Acts.SetFontColor,
+		C3.Plugins.System.Acts.SetLayerVisible,
+		C3.Plugins.System.Acts.RestartLayout,
+		C3.Plugins.System.Acts.ResetGlobals
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4573,6 +4580,11 @@ self.C3_JsPropNameTable = [
 	{o_sPlenPeer: 0},
 	{o_tCountMeshok: 0},
 	{o_tCountMeshokSecond: 0},
+	{o_ListFigurHost: 0},
+	{o_ListFigurPeer: 0},
+	{GameOver: 0},
+	{o_FakeBackgroundEndGame: 0},
+	{o_sButtonRestart: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4628,7 +4640,12 @@ self.InstanceType = {
 	s_zahvats_okrushen: class extends self.ISpriteInstance {},
 	o_sPlenPeer: class extends self.ISpriteInstance {},
 	o_tCountMeshok: class extends self.ITextInstance {},
-	o_tCountMeshokSecond: class extends self.ITextInstance {}
+	o_tCountMeshokSecond: class extends self.ITextInstance {},
+	o_ListFigurHost: class extends self.IArrayInstance {},
+	o_ListFigurPeer: class extends self.IArrayInstance {},
+	GameOver: class extends self.ISpriteInstance {},
+	o_FakeBackgroundEndGame: class extends self.ISpriteInstance {},
+	o_sButtonRestart: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4736,10 +4753,13 @@ self.C3_ExpressionFuncs = [
 			return () => f0();
 		},
 		() => "ArrayPer",
+		() => "ListFigurHost",
+		() => "ListFigurPeer",
 		() => 0,
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(1, 2, 3, 4);
+			const n0 = p._GetNode(0);
+			const v1 = p._GetNode(1).GetVar();
+			return () => n0.ExpObject((v1.GetValue() - 1));
 		},
 		() => 1,
 		p => {
@@ -4817,6 +4837,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (486 + (n0.ExpInstVar() * 124));
 		},
+		() => "EndGame",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 70);
@@ -4878,7 +4899,29 @@ self.C3_ExpressionFuncs = [
 			return () => (1000 + ((v0.GetValue() - 6) * 56.8));
 		},
 		() => "Тест",
-		() => "Обновление Цифр в Массиве"
+		() => "Обновление Цифр в Массиве",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (95 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (457 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (487 + (n0.ExpObject() * 124));
+		},
+		() => -422238236443647,
+		() => "Лист Фигур отрисовка",
+		() => -50,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (530 + (n0.ExpObject() * 40));
+		},
+		() => -717706215031807,
+		() => 1130,
+		() => -43805311999
 ];
 
 
