@@ -4509,14 +4509,16 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.Sprite.Exps.Count,
+		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.SetVisible,
-		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.System.Acts.Wait,
@@ -4570,6 +4572,7 @@ self.C3_JsPropNameTable = [
 	{s_zahvats_okrushen: 0},
 	{o_sPlenPeer: 0},
 	{o_tCountMeshok: 0},
+	{o_tCountMeshokSecond: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4624,7 +4627,8 @@ self.InstanceType = {
 	s_okrushen: class extends self.ISpriteInstance {},
 	s_zahvats_okrushen: class extends self.ISpriteInstance {},
 	o_sPlenPeer: class extends self.ISpriteInstance {},
-	o_tCountMeshok: class extends self.ITextInstance {}
+	o_tCountMeshok: class extends self.ITextInstance {},
+	o_tCountMeshokSecond: class extends self.ITextInstance {}
 }
 }
 
@@ -4791,10 +4795,20 @@ self.C3_ExpressionFuncs = [
 		() => 1000,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (840 + ((v0.GetValue() * 86.8) * (-1)));
+			return () => (840 + ((v0.GetValue() * 56.8) * (-1)));
 		},
 		() => 76.8,
+		() => 5,
+		() => 1050,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (840 + (((v0.GetValue() - 6) * 56.8) * (-1)));
+		},
 		() => 2,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 40);
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
@@ -4857,7 +4871,11 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (1000 + (v0.GetValue() * 86.8));
+			return () => (1000 + (v0.GetValue() * 56.8));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (1000 + ((v0.GetValue() - 6) * 56.8));
 		},
 		() => "Тест",
 		() => "Обновление Цифр в Массиве"
