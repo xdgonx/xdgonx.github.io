@@ -4504,18 +4504,22 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.Sprite.Cnds.IsOnScreen,
+		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.System.Acts.SubVar,
+		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
+		C3.Plugins.Sprite.Cnds.OnCollision,
+		C3.Plugins.Sprite.Exps.Width,
+		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SetBoolVar,
-		C3.Plugins.Sprite.Exps.Width,
-		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Arr.Acts.SetXY,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.Text.Acts.Destroy,
@@ -4562,11 +4566,14 @@ self.C3_JsPropNameTable = [
 	{o_sCardCrest: 0},
 	{o_sPlenHost: 0},
 	{s_okrushen: 0},
+	{s_zahvats_okrushen: 0},
+	{o_sPlenPeer: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
 	{FigurPeer: 0},
 	{plenHost: 0},
+	{plenPeer: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -4610,7 +4617,9 @@ self.InstanceType = {
 	o_sZahvat: class extends self.ISpriteInstance {},
 	o_sCardCrest: class extends self.ISpriteInstance {},
 	o_sPlenHost: class extends self.ISpriteInstance {},
-	s_okrushen: class extends self.ISpriteInstance {}
+	s_okrushen: class extends self.ISpriteInstance {},
+	s_zahvats_okrushen: class extends self.ISpriteInstance {},
+	o_sPlenPeer: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4757,7 +4766,15 @@ self.C3_ExpressionFuncs = [
 		() => 4,
 		() => 6,
 		() => 10,
-		() => 2,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 1);
+		},
+		() => -1,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 1);
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 106) / 124);
@@ -4766,6 +4783,13 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 486) / 124);
 		},
+		() => 80,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (1000 + (v0.GetValue() * 86.8));
+		},
+		() => 76.8,
+		() => 2,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
@@ -4773,6 +4797,14 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (486 + (n0.ExpInstVar() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 70);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 90);
 		},
 		() => "Выбор фигуры для действия или движения",
 		() => "ShetonyPodsvetka",
@@ -4806,15 +4838,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * (-1));
 		},
-		() => -1,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 1);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 1);
-		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (106 + (v0.GetValue() * 124));
@@ -4824,11 +4847,6 @@ self.C3_ExpressionFuncs = [
 			return () => (486 + (v0.GetValue() * 124));
 		},
 		() => 1000,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (1000 + (v0.GetValue() * 100));
-		},
-		() => 76.8,
 		() => "Тест",
 		() => "Обновление Цифр в Массиве"
 ];
