@@ -4538,6 +4538,7 @@ self.C3_GetObjectRefTable = function () {
 };
 self.C3_JsPropNameTable = [
 	{TextMassiv: 0},
+	{TextVersia: 0},
 	{o_sBackground: 0},
 	{o_sPlayerNickButt: 0},
 	{o_sPlayerImageHost: 0},
@@ -4604,6 +4605,7 @@ self.C3_JsPropNameTable = [
 
 self.InstanceType = {
 	TextMassiv: class extends self.ITextInstance {},
+	TextVersia: class extends self.ITextInstance {},
 	o_sBackground: class extends self.ISpriteInstance {},
 	o_sPlayerNickButt: class extends self.ISpriteInstance {},
 	o_sPlayerImageHost: class extends self.ISpriteInstance {},
