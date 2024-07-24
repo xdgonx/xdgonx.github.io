@@ -4561,6 +4561,7 @@ self.C3_JsPropNameTable = [
 	{o_sZahvat: 0},
 	{o_sCardCrest: 0},
 	{o_sPlenHost: 0},
+	{s_okrushen: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4608,7 +4609,8 @@ self.InstanceType = {
 	s_zahvat: class extends self.ISpriteInstance {},
 	o_sZahvat: class extends self.ISpriteInstance {},
 	o_sCardCrest: class extends self.ISpriteInstance {},
-	o_sPlenHost: class extends self.ISpriteInstance {}
+	o_sPlenHost: class extends self.ISpriteInstance {},
+	s_okrushen: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4749,7 +4751,8 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => 100,
+		() => 70,
+		() => 94.85,
 		() => 3,
 		() => 4,
 		() => 6,
@@ -4778,6 +4781,7 @@ self.C3_ExpressionFuncs = [
 		() => 680,
 		() => 540,
 		() => 30,
+		() => 100,
 		() => "Создание большой карты",
 		() => 0.1,
 		() => "Card",
