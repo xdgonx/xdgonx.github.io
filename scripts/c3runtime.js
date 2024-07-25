@@ -4595,6 +4595,7 @@ self.C3_JsPropNameTable = [
 	{o_MassivDvishenie: 0},
 	{o_ArrayMassivLuch: 0},
 	{o_sButtonNazad: 0},
+	{s_priziv: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4664,7 +4665,8 @@ self.InstanceType = {
 	s_Glaz: class extends self.ISpriteInstance {},
 	o_MassivDvishenie: class extends self.ISpriteInstance {},
 	o_ArrayMassivLuch: class extends self.IArrayInstance {},
-	o_sButtonNazad: class extends self.ISpriteInstance {}
+	o_sButtonNazad: class extends self.ISpriteInstance {},
+	s_priziv: class extends self.ISpriteInstance {}
 }
 }
 
