@@ -4594,6 +4594,7 @@ self.C3_JsPropNameTable = [
 	{s_Glaz: 0},
 	{o_MassivDvishenie: 0},
 	{o_ArrayMassivLuch: 0},
+	{o_sButtonNazad: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4608,7 +4609,8 @@ self.C3_JsPropNameTable = [
 	{ArrayX: 0},
 	{ArrayY: 0},
 	{StartX: 0},
-	{StartY: 0}
+	{StartY: 0},
+	{can: 0}
 ];
 
 self.InstanceType = {
@@ -4661,7 +4663,8 @@ self.InstanceType = {
 	o_sInvisibleFugr: class extends self.ISpriteInstance {},
 	s_Glaz: class extends self.ISpriteInstance {},
 	o_MassivDvishenie: class extends self.ISpriteInstance {},
-	o_ArrayMassivLuch: class extends self.IArrayInstance {}
+	o_ArrayMassivLuch: class extends self.IArrayInstance {},
+	o_sButtonNazad: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4873,9 +4876,9 @@ self.C3_ExpressionFuncs = [
 		() => 1723,
 		() => 680,
 		() => 270,
-		() => 540,
 		() => 30,
 		() => 100,
+		() => 540,
 		() => "Создание большой карты",
 		() => 0.1,
 		() => "Card",
