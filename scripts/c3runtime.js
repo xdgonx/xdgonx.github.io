@@ -4536,8 +4536,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals,
-		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
-		C3.Plugins.System.Cnds.EveryTick
+		C3.Plugins.Sprite.Cnds.IsOverlappingOffset
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4953,6 +4952,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (486 + ((v0.GetValue() + 1) * 124));
 		},
+		() => "Рисование Движения Лучника",
 		() => 124,
 		p => {
 			const n0 = p._GetNode(0);
