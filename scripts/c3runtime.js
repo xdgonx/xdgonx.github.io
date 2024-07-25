@@ -4598,6 +4598,7 @@ self.C3_JsPropNameTable = [
 	{s_dviglo: 0},
 	{s_dvigloZahvat: 0},
 	{s_dvigloZahvatOcrushen: 0},
+	{s_dvigloOcrushen: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4676,7 +4677,8 @@ self.InstanceType = {
 	s_priziv: class extends self.ISpriteInstance {},
 	s_dviglo: class extends self.ISpriteInstance {},
 	s_dvigloZahvat: class extends self.ISpriteInstance {},
-	s_dvigloZahvatOcrushen: class extends self.ISpriteInstance {}
+	s_dvigloZahvatOcrushen: class extends self.ISpriteInstance {},
+	s_dvigloOcrushen: class extends self.ISpriteInstance {}
 }
 }
 
