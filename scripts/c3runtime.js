@@ -4505,14 +4505,16 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Text.Acts.SetText,
-		C3.Plugins.System.Cnds.CompareVar,
-		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Sprite.Cnds.PickByUID,
+		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
-		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Sprite.Exps.Count,
-		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Acts.Wait,
@@ -4523,17 +4525,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
 		C3.Plugins.Sprite.Acts.SetOpacity,
-		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.Plugins.Touch.Cnds.OnDoubleTapGestureObject,
-		C3.Plugins.System.Cnds.Every,
-		C3.Plugins.Text.Acts.Destroy,
-		C3.Plugins.Arr.Exps.CurValue,
-		C3.Plugins.Text.Acts.SetFontColor,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals,
@@ -4567,6 +4564,7 @@ self.C3_JsPropNameTable = [
 	{s_FiguraDvisn: 0},
 	{s_FiguraDeistv: 0},
 	{object: 0},
+	{id: 0},
 	{o_ShetonSveshenie: 0},
 	{o_sButtonOtmena2: 0},
 	{o_sCardLittle: 0},
@@ -4597,6 +4595,9 @@ self.C3_JsPropNameTable = [
 	{o_ArrayMassivLuch: 0},
 	{o_sButtonNazad: 0},
 	{s_priziv: 0},
+	{s_dviglo: 0},
+	{s_dvigloZahvat: 0},
+	{s_dvigloZahvatOcrushen: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4605,6 +4606,7 @@ self.C3_JsPropNameTable = [
 	{plenPeer: 0},
 	{MeshokPeer: 0},
 	{MeshokHost: 0},
+	{figuraCanMove: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -4612,7 +4614,11 @@ self.C3_JsPropNameTable = [
 	{ArrayY: 0},
 	{StartX: 0},
 	{StartY: 0},
-	{can: 0}
+	{can: 0},
+	{objX: 0},
+	{objY: 0},
+	{vid: 0},
+	{var: 0}
 ];
 
 self.InstanceType = {
@@ -4667,7 +4673,10 @@ self.InstanceType = {
 	o_MassivDvishenie: class extends self.ISpriteInstance {},
 	o_ArrayMassivLuch: class extends self.IArrayInstance {},
 	o_sButtonNazad: class extends self.ISpriteInstance {},
-	s_priziv: class extends self.ISpriteInstance {}
+	s_priziv: class extends self.ISpriteInstance {},
+	s_dviglo: class extends self.ISpriteInstance {},
+	s_dvigloZahvat: class extends self.ISpriteInstance {},
+	s_dvigloZahvatOcrushen: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4814,19 +4823,8 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 70,
 		() => 94.85,
-		() => 3,
-		() => 4,
-		() => 6,
-		() => 10,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 1);
-		},
-		() => -1,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 1);
-		},
+		() => 110,
+		() => 149.05,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 106) / 124);
@@ -4835,6 +4833,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 486) / 124);
 		},
+		() => 2,
 		() => 1000,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4847,11 +4846,13 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (840 + (((v0.GetValue() - 6) * 56.8) * (-1)));
 		},
-		() => 2,
+		() => 10,
+		() => 6,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 40);
 		},
+		() => 3,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
@@ -4879,6 +4880,7 @@ self.C3_ExpressionFuncs = [
 		() => 1723,
 		() => 680,
 		() => 270,
+		() => 4,
 		() => 30,
 		() => 100,
 		() => 540,
@@ -4906,6 +4908,15 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * (-1));
 		},
+		() => -1,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 1);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 1);
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (106 + (v0.GetValue() * 124));
@@ -4922,18 +4933,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (1000 + ((v0.GetValue() - 6) * 56.8));
 		},
-		() => "Тест",
-		() => "Удаление Жетона С Поля",
-		() => "Обновление Цифр в Массиве",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (95 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (487 + (n0.ExpObject() * 124));
-		},
-		() => -422238236443647,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 1);
