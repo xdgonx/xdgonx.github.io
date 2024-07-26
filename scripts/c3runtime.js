@@ -4525,6 +4525,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Text.Acts.SetFontColor,
+		C3.Plugins.Text.Acts.SetY,
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
 		C3.Plugins.Sprite.Acts.SetOpacity,
@@ -4872,10 +4874,14 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 90);
 		},
+		() => -717750023016447,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => and(v0.GetValue(), "/20");
 		},
+		() => 1805.194816,
+		() => -422238236443647,
+		() => 1835.194816,
 		() => "Выбор фигуры для действия или движения",
 		() => "ShetonyPodsvetka",
 		() => 400,
