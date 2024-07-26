@@ -4513,11 +4513,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
+		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.Sprite.Exps.Count,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
@@ -4531,12 +4530,15 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
 		C3.Plugins.Sprite.Acts.SetOpacity,
+		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Arr.Acts.SetXY,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals,
-		C3.Plugins.Sprite.Cnds.IsOverlappingOffset
+		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
+		C3.Plugins.Sprite.Exps.IID,
+		C3.Plugins.Sprite.Cnds.OnCreated
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4858,26 +4860,12 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 76.8,
 		() => 5,
-		() => 1050,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (840 + (((v0.GetValue() - 6) * 56.8) * (-1)));
-		},
+		() => 80,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (1000 + (v0.GetValue() * 56.8));
 		},
-		() => 50,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (1000 + ((v0.GetValue() - 6) * 56.8));
-		},
 		() => 10,
-		() => 6,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 40);
-		},
 		() => 3,
 		p => {
 			const n0 = p._GetNode(0);
@@ -4989,6 +4977,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar() - 1);
 		},
+		() => 6,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 2);
@@ -5012,7 +5001,24 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (486 + ((v0.GetValue() + 2) * 124));
-		}
+		},
+		() => "ВЫРАВНИВАНИЕ СБРОСОВ и ПЛЕНОВ",
+		() => 120,
+		() => 1056.8,
+		() => 1113.6,
+		() => 1170.4,
+		() => 1227.2,
+		() => 40,
+		() => 7,
+		() => 8,
+		() => 9,
+		() => 840,
+		() => 783.2,
+		() => 726.4,
+		() => 669.6,
+		() => 612.8,
+		() => 960,
+		() => 1040
 ];
 
 
