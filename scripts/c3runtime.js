@@ -4510,6 +4510,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Plugins.Sprite.Exps.Width,
+		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
+		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
@@ -4522,21 +4526,23 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.System.Cnds.LayerVisible,
+		C3.Plugins.Sprite.Exps.Count,
 		C3.Plugins.Sprite.Cnds.OnCollision,
-		C3.Plugins.Sprite.Exps.Width,
-		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.SetFontColor,
 		C3.Plugins.Text.Acts.SetY,
-		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Arr.Acts.SetXY,
+		C3.Plugins.Touch.Cnds.OnDoubleTapGestureObject,
+		C3.Plugins.System.Cnds.Every,
+		C3.Plugins.Text.Acts.Destroy,
+		C3.Plugins.Arr.Exps.CurValue,
+		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals,
-		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.Sprite.Cnds.OnCreated
 	];
@@ -4570,6 +4576,10 @@ self.C3_JsPropNameTable = [
 	{object: 0},
 	{id: 0},
 	{o_ShetonSveshenie: 0},
+	{idShit: 0},
+	{deltaShitX: 0},
+	{deltaShitY: 0},
+	{ShetonShit: 0},
 	{o_sButtonOtmena2: 0},
 	{o_sCardLittle: 0},
 	{o_sCardBig: 0},
@@ -4607,6 +4617,11 @@ self.C3_JsPropNameTable = [
 	{s_sbroshen: 0},
 	{o_sSbrosPeer: 0},
 	{o_sSbrosHost: 0},
+	{o_ShetonSveshenieFake: 0},
+	{s_dviglo_sbroshen: 0},
+	{objectShit: 0},
+	{o_ShetonChoose: 0},
+	{o_MassivSposobnostiShitonosecFake: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4619,6 +4634,7 @@ self.C3_JsPropNameTable = [
 	{MeshokHost: 0},
 	{figuraCanMove: 0},
 	{figuraCanUseSkill: 0},
+	{Test: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -4693,7 +4709,11 @@ self.InstanceType = {
 	o_MassivSposobnosti: class extends self.ISpriteInstance {},
 	s_sbroshen: class extends self.ISpriteInstance {},
 	o_sSbrosPeer: class extends self.ISpriteInstance {},
-	o_sSbrosHost: class extends self.ISpriteInstance {}
+	o_sSbrosHost: class extends self.ISpriteInstance {},
+	o_ShetonSveshenieFake: class extends self.ISpriteInstance {},
+	s_dviglo_sbroshen: class extends self.ISpriteInstance {},
+	o_ShetonChoose: class extends self.ISpriteInstance {},
+	o_MassivSposobnostiShitonosecFake: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4851,8 +4871,22 @@ self.C3_ExpressionFuncs = [
 			return () => ((n0.ExpObject() - 486) / 124);
 		},
 		() => 2,
+		() => "ShetonyPodsvetka",
+		() => 400,
+		() => 1723,
+		() => 251.52,
 		() => 100,
 		() => 135.5,
+		() => 3,
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => n0.ExpObject(((n1.ExpObject() - 106) / 124), ((n2.ExpObject() - 486) / 124));
+		},
+		() => 540,
+		() => 1806,
+		() => 366.8,
 		() => 1000,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4866,7 +4900,6 @@ self.C3_ExpressionFuncs = [
 			return () => (1000 + (v0.GetValue() * 56.8));
 		},
 		() => 10,
-		() => 3,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
@@ -4884,6 +4917,14 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 90);
 		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 35);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 45);
+		},
 		() => -717750023016447,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4893,14 +4934,10 @@ self.C3_ExpressionFuncs = [
 		() => -422238236443647,
 		() => 1835.194816,
 		() => "Выбор фигуры для действия или движения",
-		() => "ShetonyPodsvetka",
-		() => 400,
-		() => 1723,
 		() => 680,
 		() => 270,
 		() => 4,
 		() => 30,
-		() => 540,
 		() => "Создание большой карты",
 		() => 0.1,
 		() => "Card",
@@ -4942,6 +4979,21 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (486 + (v0.GetValue() * 124));
 		},
+		() => "Тест",
+		() => "Удаление Жетона С Поля",
+		() => "Какие айди у клеток поля",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (95 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (457 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (487 + (n0.ExpObject() * 124));
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 1);
@@ -4976,6 +5028,14 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar() - 1);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() - 2);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() + 2);
 		},
 		() => 6,
 		p => {
