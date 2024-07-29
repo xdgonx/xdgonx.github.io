@@ -4612,7 +4612,6 @@ self.C3_JsPropNameTable = [
 	{s_dviglo: 0},
 	{s_dvigloZahvat: 0},
 	{s_dvigloZahvatOcrushen: 0},
-	{s_dvigloOcrushen: 0},
 	{o_MassivSposobnosti: 0},
 	{s_sbroshen: 0},
 	{o_sSbrosPeer: 0},
@@ -4705,7 +4704,6 @@ self.InstanceType = {
 	s_dviglo: class extends self.ISpriteInstance {},
 	s_dvigloZahvat: class extends self.ISpriteInstance {},
 	s_dvigloZahvatOcrushen: class extends self.ISpriteInstance {},
-	s_dvigloOcrushen: class extends self.ISpriteInstance {},
 	o_MassivSposobnosti: class extends self.ISpriteInstance {},
 	s_sbroshen: class extends self.ISpriteInstance {},
 	o_sSbrosPeer: class extends self.ISpriteInstance {},
@@ -4858,10 +4856,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => 70,
-		() => 94.85,
-		() => 110,
-		() => 149.05,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 106) / 124);
@@ -4875,8 +4869,6 @@ self.C3_ExpressionFuncs = [
 		() => 400,
 		() => 1723,
 		() => 251.52,
-		() => 100,
-		() => 135.5,
 		() => 3,
 		p => {
 			const n0 = p._GetNode(0);
@@ -4909,22 +4901,6 @@ self.C3_ExpressionFuncs = [
 			return () => (486 + (n0.ExpInstVar() * 124));
 		},
 		() => "EndGame",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 70);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 90);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 35);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 45);
-		},
 		() => -717750023016447,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4938,6 +4914,7 @@ self.C3_ExpressionFuncs = [
 		() => 270,
 		() => 4,
 		() => 30,
+		() => 100,
 		() => "Создание большой карты",
 		() => 0.1,
 		() => "Card",
@@ -5078,7 +5055,8 @@ self.C3_ExpressionFuncs = [
 		() => 669.6,
 		() => 612.8,
 		() => 960,
-		() => 1040
+		() => 1040,
+		() => "ИЗМЕНЕНИЕ ВИДИМОСТИ ИКОНОК СОСТОЯНИЯ"
 ];
 
 
