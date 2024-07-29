@@ -4483,73 +4483,82 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Arr.Cnds.CompareXY,
 		C3.Plugins.Arr.Exps.CurX,
 		C3.Plugins.Arr.Exps.CurY,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
-		C3.Plugins.Touch.Cnds.IsTouchingObject,
+		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.Sprite.Exps.AnimationFrame,
+		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.Sprite.Cnds.IsOverlapping,
+		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Plugins.Sprite.Acts.SetSize,
+		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.Sprite.Cnds.PickByUID,
 		C3.Plugins.Sprite.Acts.SetPos,
-		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
-		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
 		C3.Plugins.Sprite.Exps.UID,
-		C3.Plugins.Sprite.Cnds.IsOnScreen,
-		C3.Plugins.System.Cnds.ForEach,
-		C3.Plugins.Sprite.Cnds.IsOverlapping,
-		C3.Plugins.System.Cnds.ForEachOrdered,
-		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.CompareVar,
-		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Text.Acts.SetVisible,
+		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Sprite.Exps.Count,
+		C3.Plugins.Sprite.Cnds.OnCreated,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Text.Acts.SetFontColor,
 		C3.Plugins.Text.Acts.SetY,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Arr.Acts.SetXY,
 		C3.Plugins.Touch.Cnds.OnDoubleTapGestureObject,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.Text.Acts.Destroy,
 		C3.Plugins.Arr.Exps.CurValue,
-		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Plugins.Sprite.Exps.IID,
-		C3.Plugins.Sprite.Cnds.OnCreated
+		C3.Plugins.System.Acts.SetFunctionReturnValue
 	];
 };
 self.C3_JsPropNameTable = [
 	{TextMassiv: 0},
 	{TextVersia: 0},
+	{o_sButtonPrizivVragTest: 0},
+	{deltaX: 0},
+	{deltaY: 0},
+	{o_MassivTest: 0},
+	{o_sButtonVragEndHod: 0},
 	{o_sBackground: 0},
 	{o_sPlayerNickButt: 0},
 	{o_sPlayerImageHost: 0},
@@ -4561,8 +4570,6 @@ self.C3_JsPropNameTable = [
 	{o_sButtonPriziv: 0},
 	{o_sPriziv: 0},
 	{Touch: 0},
-	{deltaX: 0},
-	{deltaY: 0},
 	{o_sShetoniGame: 0},
 	{o_Massiv: 0},
 	{o_ArrayHost: 0},
@@ -4580,6 +4587,7 @@ self.C3_JsPropNameTable = [
 	{deltaShitX: 0},
 	{deltaShitY: 0},
 	{ShetonShit: 0},
+	{vrag: 0},
 	{o_sButtonOtmena2: 0},
 	{o_sCardLittle: 0},
 	{o_sCardBig: 0},
@@ -4621,6 +4629,12 @@ self.C3_JsPropNameTable = [
 	{objectShit: 0},
 	{o_ShetonChoose: 0},
 	{o_MassivSposobnostiShitonosecFake: 0},
+	{o_sShetoniGameVrag: 0},
+	{o_sZahvatVrag: 0},
+	{o_sInvisibleFugrVrag: 0},
+	{s_VosklZnak: 0},
+	{s_VosklZnakChoose: 0},
+	{s_VosklZnakChooseen: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4634,6 +4648,7 @@ self.C3_JsPropNameTable = [
 	{figuraCanMove: 0},
 	{figuraCanUseSkill: 0},
 	{Test: 0},
+	{TestPriziv: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -4644,12 +4659,16 @@ self.C3_JsPropNameTable = [
 	{can: 0},
 	{objX: 0},
 	{objY: 0},
-	{vid: 0}
+	{vid: 0},
+	{Host: 0}
 ];
 
 self.InstanceType = {
 	TextMassiv: class extends self.ITextInstance {},
 	TextVersia: class extends self.ITextInstance {},
+	o_sButtonPrizivVragTest: class extends self.ISpriteInstance {},
+	o_MassivTest: class extends self.ISpriteInstance {},
+	o_sButtonVragEndHod: class extends self.ISpriteInstance {},
 	o_sBackground: class extends self.ISpriteInstance {},
 	o_sPlayerNickButt: class extends self.ISpriteInstance {},
 	o_sPlayerImageHost: class extends self.ISpriteInstance {},
@@ -4710,7 +4729,13 @@ self.InstanceType = {
 	o_ShetonSveshenieFake: class extends self.ISpriteInstance {},
 	s_dviglo_sbroshen: class extends self.ISpriteInstance {},
 	o_ShetonChoose: class extends self.ISpriteInstance {},
-	o_MassivSposobnostiShitonosecFake: class extends self.ISpriteInstance {}
+	o_MassivSposobnostiShitonosecFake: class extends self.ISpriteInstance {},
+	o_sShetoniGameVrag: class extends self.ISpriteInstance {},
+	o_sZahvatVrag: class extends self.ISpriteInstance {},
+	o_sInvisibleFugrVrag: class extends self.ISpriteInstance {},
+	s_VosklZnak: class extends self.ISpriteInstance {},
+	s_VosklZnakChoose: class extends self.ISpriteInstance {},
+	s_VosklZnakChooseen: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4821,17 +4846,28 @@ self.C3_ExpressionFuncs = [
 		() => "ListFigurHost",
 		() => "ListFigurPeer",
 		() => "MassivLuch",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(0);
+		},
 		() => 0,
+		() => 2,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => n0.ExpObject((v1.GetValue() - 1));
 		},
 		() => 1,
+		() => "ПРИЗЫВ ФИГУР ВРАГА ТЕСТ",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and(v0.GetValue(), "/20");
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
+		() => -1,
 		() => "Shetony",
 		p => {
 			const n0 = p._GetNode(0);
@@ -4842,19 +4878,15 @@ self.C3_ExpressionFuncs = [
 			return () => (486 + (n0.ExpObject() * 124));
 		},
 		() => "",
-		() => 115.2,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 10);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => v0.GetValue();
-		},
+		() => 3,
+		() => 478,
+		() => 858,
+		() => 4,
+		() => 602,
+		() => -10,
+		() => 5,
+		() => 982,
+		() => 10,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 106) / 124);
@@ -4863,34 +4895,51 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 486) / 124);
 		},
-		() => 2,
-		() => "ShetonyPodsvetka",
-		() => 400,
-		() => 1723,
-		() => 251.52,
-		() => 3,
 		p => {
 			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			return () => n0.ExpObject(((n1.ExpObject() - 106) / 124), ((n2.ExpObject() - 486) / 124));
+			return () => n0.ExpInstVar();
 		},
-		() => 540,
-		() => 1806,
-		() => 366.8,
 		() => 1000,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (840 + ((v0.GetValue() * 56.8) * (-1)));
 		},
 		() => 76.8,
-		() => 5,
-		() => 80,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (1000 + (v0.GetValue() * 56.8));
 		},
-		() => 10,
+		() => 80,
+		() => 115.2,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => ((n0.ExpObject() + 10) * (-1));
+		},
+		() => "СОЗДАНИЕ",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 10);
+		},
+		() => "ДВИЖЕНИЕ",
+		() => "ShetonyPodsvetka",
+		() => 400,
+		() => 1723,
+		() => 251.52,
+		() => "ДЕЙСТВИЕ",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => n0.ExpObject(((n1.ExpObject() - 106) / 124), ((n2.ExpObject() - 486) / 124));
+		},
+		() => "КНОПКИ",
+		() => 540,
+		() => 1806,
+		() => 366.8,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
@@ -4901,19 +4950,18 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "EndGame",
 		() => -717750023016447,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and(v0.GetValue(), "/20");
-		},
 		() => 1805.194816,
 		() => -422238236443647,
 		() => 1835.194816,
 		() => "Выбор фигуры для действия или движения",
 		() => 680,
 		() => 270,
-		() => 4,
+		() => "РАБОТА С ЗАХВАТИВШИМИ",
 		() => 30,
+		() => 10349.9437,
 		() => 100,
+		() => 349.9437,
+		() => "РАБОТА С КНОПКАМИ ОТМЕНА И ДЕЙСТВИЯ",
 		() => "Создание большой карты",
 		() => 0.1,
 		() => "Card",
@@ -4938,7 +4986,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * (-1));
 		},
-		() => -1,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 1);
@@ -4970,6 +5017,15 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (487 + (n0.ExpObject() * 124));
 		},
+		() => "Какие фигуры в мешке",
+		() => -50,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (530 + (n0.ExpObject() * 40));
+		},
+		() => -717706215031807,
+		() => 1130,
+		() => -43805311999,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 1);
@@ -5048,14 +5104,35 @@ self.C3_ExpressionFuncs = [
 		() => 7,
 		() => 8,
 		() => 9,
+		() => 1284,
+		() => 11,
+		() => 12,
+		() => 1340.8,
+		() => 13,
+		() => 14,
+		() => 1397.6,
+		() => 15,
+		() => 16,
+		() => 1454.4,
+		() => 17,
+		() => 18,
+		() => 1511.2,
+		() => 19,
 		() => 840,
 		() => 783.2,
 		() => 726.4,
 		() => 669.6,
 		() => 612.8,
+		() => 556,
+		() => 499.20000000000005,
+		() => 442.40000000000003,
+		() => 385.6,
+		() => 328.8,
 		() => 960,
 		() => 1040,
-		() => "ИЗМЕНЕНИЕ ВИДИМОСТИ ИКОНОК СОСТОЯНИЯ"
+		() => "ИЗМЕНЕНИЕ ВИДИМОСТИ ИКОНОК СОСТОЯНИЯ",
+		() => "ПРИЗЫВ ФИГУРЫ",
+		() => "ВЫБРАТЬ ФИГУРУ КОТОРАЯ ОТПРАВИТСЯ В ПЛЕН СО СТОЛА"
 ];
 
 
