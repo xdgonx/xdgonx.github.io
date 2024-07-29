@@ -4644,8 +4644,7 @@ self.C3_JsPropNameTable = [
 	{can: 0},
 	{objX: 0},
 	{objY: 0},
-	{vid: 0},
-	{var: 0}
+	{vid: 0}
 ];
 
 self.InstanceType = {
