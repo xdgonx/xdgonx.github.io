@@ -4635,6 +4635,7 @@ self.C3_JsPropNameTable = [
 	{s_VosklZnak: 0},
 	{s_VosklZnakChoose: 0},
 	{s_VosklZnakChooseen: 0},
+	{o_sPrizivVrag: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4735,7 +4736,8 @@ self.InstanceType = {
 	o_sInvisibleFugrVrag: class extends self.ISpriteInstance {},
 	s_VosklZnak: class extends self.ISpriteInstance {},
 	s_VosklZnakChoose: class extends self.ISpriteInstance {},
-	s_VosklZnakChooseen: class extends self.ISpriteInstance {}
+	s_VosklZnakChooseen: class extends self.ISpriteInstance {},
+	o_sPrizivVrag: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4910,14 +4912,14 @@ self.C3_ExpressionFuncs = [
 			return () => (1000 + (v0.GetValue() * 56.8));
 		},
 		() => 80,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(0);
+		},
 		() => 115.2,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() + 10) * (-1));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(0);
 		},
 		() => "СОЗДАНИЕ",
 		p => {
