@@ -4653,6 +4653,7 @@ self.C3_JsPropNameTable = [
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
+	{Host: 0},
 	{ArrayX: 0},
 	{ArrayY: 0},
 	{StartX: 0},
@@ -4660,8 +4661,7 @@ self.C3_JsPropNameTable = [
 	{can: 0},
 	{objX: 0},
 	{objY: 0},
-	{vid: 0},
-	{Host: 0}
+	{vid: 0}
 ];
 
 self.InstanceType = {
@@ -5010,6 +5010,10 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (95 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (457 + (n0.ExpObject() * 124));
 		},
 		p => {
 			const n0 = p._GetNode(0);
