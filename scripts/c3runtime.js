@@ -5011,10 +5011,6 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (457 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
 			return () => (487 + (n0.ExpObject() * 124));
 		},
 		() => "Какие фигуры в мешке",
@@ -5050,6 +5046,14 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (486 + ((v0.GetValue() + 1) * 124));
 		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() - 2);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() + 2);
+		},
 		() => "Рисование Движения Лучника",
 		() => 124,
 		p => {
@@ -5072,15 +5076,7 @@ self.C3_ExpressionFuncs = [
 		() => 6,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() - 2);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
 			return () => (106 + ((v0.GetValue() - 2) * 124));
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() + 2);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
