@@ -4483,13 +4483,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
-		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
@@ -4512,6 +4511,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SetVar,
@@ -4846,12 +4846,7 @@ self.C3_ExpressionFuncs = [
 		() => "ListFigurHost",
 		() => "ListFigurPeer",
 		() => "MassivLuch",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(0);
-		},
 		() => 0,
-		() => 2,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
@@ -4883,6 +4878,7 @@ self.C3_ExpressionFuncs = [
 		() => 858,
 		() => 4,
 		() => 602,
+		() => 2,
 		() => -10,
 		() => 5,
 		() => 982,
@@ -4918,6 +4914,10 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() + 10) * (-1));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(0);
 		},
 		() => "СОЗДАНИЕ",
 		p => {
