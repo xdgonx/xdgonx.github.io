@@ -4700,7 +4700,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Arr.Exps.AsJSON,
-		C3.Plugins.Arr.Acts.Reverse,
 		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.TextBox.Cnds.CompareText,
