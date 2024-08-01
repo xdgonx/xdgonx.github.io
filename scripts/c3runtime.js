@@ -4629,6 +4629,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
+		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Sprite.Exps.X,
@@ -4653,7 +4654,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
@@ -4815,6 +4815,7 @@ self.C3_JsPropNameTable = [
 	{isHost: 0},
 	{isPeer: 0},
 	{NowPlayPlayer: 0},
+	{CreateFigur: 0},
 	{Load: 0},
 	{delX: 0},
 	{delY: 0},
@@ -5124,6 +5125,8 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			return () => multiply(add(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10), (-1));
 		},
+		() => "Create",
+		() => "create",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
