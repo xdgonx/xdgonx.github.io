@@ -5122,18 +5122,6 @@ self.C3_ExpressionFuncs = [
 		() => "Array",
 		p => {
 			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			return () => subtract(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			return () => multiply(add(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10), (-1));
-		},
-		p => {
-			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
 		},
 		p => {
@@ -5344,6 +5332,18 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue()).toString();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => subtract(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => multiply(add(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10), (-1));
 		},
 		() => "Common",
 		() => "Dgon"
