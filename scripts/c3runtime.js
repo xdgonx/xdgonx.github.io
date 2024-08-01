@@ -5345,7 +5345,6 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
 		},
-		() => 0.5,
 		() => "Common",
 		() => "Dgon"
 ];
