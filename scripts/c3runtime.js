@@ -4629,42 +4629,42 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
-		C3.Plugins.System.Cnds.CompareVar,
-		C3.Plugins.Text.Acts.SetText,
-		C3.Plugins.Arr.Cnds.ArrForEach,
-		C3.Plugins.Arr.Cnds.CompareXY,
-		C3.Plugins.Arr.Exps.CurX,
-		C3.Plugins.Arr.Exps.CurY,
+		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.System.Acts.CreateObject,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
-		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
-		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.System.Cnds.ForEach,
-		C3.Plugins.Sprite.Cnds.IsOverlapping,
-		C3.Plugins.System.Cnds.ForEachOrdered,
-		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
+		C3.Plugins.Sprite.Acts.SetSize,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Acts.Wait,
-		C3.Plugins.System.Acts.SetVar,
-		C3.Plugins.Touch.Cnds.IsTouchingObject,
+		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Cnds.PickByUID,
 		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Sprite.Cnds.IsOverlappingOffset,
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
+		C3.Plugins.Sprite.Cnds.IsOnScreen,
+		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.Sprite.Cnds.IsOverlapping,
+		C3.Plugins.System.Cnds.ForEachOrdered,
+		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
-		C3.Plugins.Arr.Exps.AsJSON,
-		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.Arr.Exps.AsJSON,
+		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.Text.Acts.SetVisible,
+		C3.Plugins.Arr.Cnds.ArrForEach,
+		C3.Plugins.Arr.Cnds.CompareXY,
+		C3.Plugins.Arr.Exps.CurX,
+		C3.Plugins.Arr.Exps.CurY,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
@@ -4697,10 +4697,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.OnSignallingJoinedRoom,
 		C3.Plugins.Multiplayer.Cnds.IsHost,
 		C3.Plugins.System.Acts.SetGroupActive,
+		C3.Plugins.Sprite.Acts.SetAngle,
 		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.System.Exps.int,
-		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.TextBox.Cnds.CompareText,
 		C3.Plugins.TextBox.Exps.Text,
@@ -4818,7 +4818,6 @@ self.C3_JsPropNameTable = [
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
-	{Host: 0},
 	{ArrayX: 0},
 	{ArrayY: 0},
 	{StartX: 0},
@@ -4827,6 +4826,7 @@ self.C3_JsPropNameTable = [
 	{objX: 0},
 	{objY: 0},
 	{vid: 0},
+	{Host: 0},
 	{Game: 0},
 	{Instance: 0},
 	{Room: 0},
@@ -5032,36 +5032,27 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject((v1.GetValue() - 1));
 		},
 		() => 1,
-		() => "ПРИЗЫВ ФИГУР ВРАГА ТЕСТ",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and(v0.GetValue(), "/20");
-		},
+		() => "СОЗДАНИЕ",
+		() => "Shetony",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
-		() => -1,
-		() => "Shetony",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (106 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (486 + (n0.ExpObject() * 124));
-		},
 		() => "",
-		() => 3,
-		() => 478,
-		() => 858,
-		() => 4,
-		() => 602,
-		() => 2,
-		() => -10,
-		() => 5,
-		() => 982,
-		() => 10,
+		() => 115.2,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 10);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
+		},
+		() => "ДВИЖЕНИЕ",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 106) / 124);
@@ -5070,45 +5061,13 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpObject() - 486) / 124);
 		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
-		() => 1000,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (840 + ((v0.GetValue() * 56.8) * (-1)));
-		},
-		() => 76.8,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => v0.GetValue();
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (1000 + (v0.GetValue() * 56.8));
-		},
-		() => 80,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(0);
-		},
-		() => 115.2,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => ((n0.ExpObject() + 10) * (-1));
-		},
-		() => "СОЗДАНИЕ",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 10);
-		},
-		() => "ДВИЖЕНИЕ",
+		() => 2,
 		() => "ShetonyPodsvetka",
 		() => 400,
 		() => 1723,
 		() => 251.52,
 		() => "ДЕЙСТВИЕ",
+		() => 3,
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
@@ -5119,13 +5078,45 @@ self.C3_ExpressionFuncs = [
 		() => 540,
 		() => 1806,
 		() => 366.8,
+		() => 1000,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (840 + ((v0.GetValue() * 56.8) * (-1)));
+		},
+		() => 76.8,
+		() => 5,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (1000 + (v0.GetValue() * 56.8));
+		},
+		() => 80,
+		() => "SbrosMy",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject()).toString();
+		},
+		() => "SbrosOpponent",
+		() => 10,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(0);
+		},
 		() => "Array",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (106 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (486 + (n0.ExpObject() * 124));
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
 			const n2 = p._GetNode(2);
 			return () => subtract(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10);
 		},
+		() => -10,
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
@@ -5140,14 +5131,23 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (486 + (n0.ExpInstVar() * 124));
 		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => ((n0.ExpObject() + 10) * (-1));
+		},
 		() => "EndGame",
 		() => -717750023016447,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and(v0.GetValue(), "/20");
+		},
 		() => 1805.194816,
 		() => -422238236443647,
 		() => 1835.194816,
 		() => "Выбор фигуры для действия или движения",
 		() => 680,
 		() => 270,
+		() => 4,
 		() => "РАБОТА С ЗАХВАТИВШИМИ",
 		() => 30,
 		() => 10349.9437,
@@ -5178,6 +5178,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() * (-1));
 		},
+		() => -1,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 1);
@@ -5325,6 +5326,10 @@ self.C3_ExpressionFuncs = [
 		() => 1040,
 		() => "ИЗМЕНЕНИЕ ВИДИМОСТИ ИКОНОК СОСТОЯНИЯ",
 		() => "ПРИЗЫВ ФИГУРЫ",
+		() => 478,
+		() => 982,
+		() => 602,
+		() => 858,
 		() => "ВЫБРАТЬ ФИГУРУ КОТОРАЯ ОТПРАВИТСЯ В ПЛЕН СО СТОЛА",
 		() => "МУЛЬТИПЛЕЕР",
 		() => "Signaling",
@@ -5334,7 +5339,7 @@ self.C3_ExpressionFuncs = [
 		() => "UniUniRoom",
 		() => "Host",
 		() => "Peer",
-		() => -744.1,
+		() => 180,
 		() => "loadName",
 		() => "loadIcon",
 		p => {
@@ -5352,7 +5357,6 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
 		},
-		() => "Common",
 		() => "Dgon"
 ];
 
