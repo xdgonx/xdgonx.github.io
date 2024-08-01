@@ -4831,6 +4831,7 @@ self.C3_JsPropNameTable = [
 	{Instance: 0},
 	{Room: 0},
 	{PirSendMessageFirstTime: 0},
+	{Load: 0},
 	{Login: 0},
 	{isMultiplayerOn: 0},
 	{Avatarka: 0}
