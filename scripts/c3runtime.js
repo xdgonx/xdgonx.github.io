@@ -5186,6 +5186,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 1);
 		},
+		() => "ShetonyZahvat",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (106 + (v0.GetValue() * 124));
