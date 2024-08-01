@@ -4661,6 +4661,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
+		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
+		C3.Plugins.Arr.Exps.AsJSON,
+		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Text.Acts.SetVisible,
@@ -4697,9 +4700,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.System.Exps.int,
-		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
-		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
-		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.TextBox.Cnds.CompareText,
@@ -4812,6 +4812,8 @@ self.C3_JsPropNameTable = [
 	{figuraCanUseSkill: 0},
 	{Test: 0},
 	{TestPriziv: 0},
+	{isHost: 0},
+	{isPeer: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -5116,6 +5118,7 @@ self.C3_ExpressionFuncs = [
 		() => 540,
 		() => 1806,
 		() => 366.8,
+		() => "Array",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (106 + (n0.ExpInstVar() * 124));
@@ -5329,8 +5332,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue()).toString();
 		},
-		() => "Array",
-		() => 0.5,
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
@@ -5343,6 +5344,7 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
 		},
+		() => 0.5,
 		() => "Common",
 		() => "Dgon"
 ];
