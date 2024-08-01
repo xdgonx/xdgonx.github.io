@@ -4696,6 +4696,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetGroupActive,
 		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Multiplayer.Exps.Message,
+		C3.Plugins.System.Exps.int,
+		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Button.Cnds.OnClicked,
@@ -4824,6 +4826,7 @@ self.C3_JsPropNameTable = [
 	{Game: 0},
 	{Instance: 0},
 	{Room: 0},
+	{PirSendMessageFirstTime: 0},
 	{Login: 0},
 	{isMultiplayerOn: 0},
 	{Avatarka: 0}
@@ -5318,6 +5321,11 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "loadName",
 		() => "loadIcon",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1());
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue()).toString();
