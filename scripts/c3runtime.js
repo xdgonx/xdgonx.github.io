@@ -4699,6 +4699,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
+		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.TextBox.Cnds.CompareText,
@@ -5309,6 +5310,7 @@ self.C3_ExpressionFuncs = [
 		() => "ПРИЗЫВ ФИГУРЫ",
 		() => "ВЫБРАТЬ ФИГУРУ КОТОРАЯ ОТПРАВИТСЯ В ПЛЕН СО СТОЛА",
 		() => "МУЛЬТИПЛЕЕР",
+		() => "Signaling",
 		() => "wss://multiplayer.construct.net",
 		() => "UniqueUnitsBattleBotGame",
 		() => "MainBranch",
@@ -5330,6 +5332,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue()).toString();
 		},
+		() => "Array",
 		() => "Common",
 		() => "Dgon"
 ];
