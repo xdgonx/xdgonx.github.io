@@ -4653,6 +4653,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
@@ -4660,7 +4661,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Arr.Exps.AsJSON,
-		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Arr.Cnds.CompareXY,
@@ -4815,6 +4815,7 @@ self.C3_JsPropNameTable = [
 	{isHost: 0},
 	{isPeer: 0},
 	{NowPlayPlayer: 0},
+	{Load: 0},
 	{delX: 0},
 	{delY: 0},
 	{IndexKletki: 0},
@@ -5091,7 +5092,10 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 80,
 		() => "SbrosMy",
-		() => "1",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue()).toString();
+		},
 		() => "SbrosOpponent",
 		() => 10,
 		p => {
@@ -5343,10 +5347,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue()).toString();
 		},
 		p => {
 			const n0 = p._GetNode(0);
