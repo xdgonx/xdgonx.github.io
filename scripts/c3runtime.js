@@ -4630,6 +4630,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
 		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
+		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Sprite.Exps.X,
@@ -4654,9 +4657,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
-		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.Wait,
@@ -5034,13 +5034,15 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject((v1.GetValue() - 1));
 		},
 		() => 1,
+		() => "",
+		() => "OpponentPriziv",
+		() => "priziv",
 		() => "СОЗДАНИЕ",
 		() => "Shetony",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
-		() => "",
 		() => 115.2,
 		p => {
 			const n0 = p._GetNode(0);
@@ -5344,6 +5346,7 @@ self.C3_ExpressionFuncs = [
 		() => "MainBranch",
 		() => "UniUniRoom",
 		() => "Host",
+		() => "LoadFigurOpponent",
 		() => "Peer",
 		() => 180,
 		() => "loadName",
