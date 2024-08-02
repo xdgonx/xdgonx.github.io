@@ -5087,16 +5087,18 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 76.8,
 		() => 5,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (1000 + (v0.GetValue() * 56.8));
-		},
-		() => 80,
-		() => "SbrosMy",
+		() => "PlenMy",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue()).toString();
 		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (1000 + (v0.GetValue() * 56.8));
+		},
+		() => "PlenOpponent",
+		() => 80,
+		() => "SbrosMy",
 		() => "SbrosOpponent",
 		() => 10,
 		p => {
