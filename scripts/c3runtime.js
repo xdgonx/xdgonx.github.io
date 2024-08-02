@@ -4620,20 +4620,19 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
-		C3.Plugins.System.Cnds.CompareBoolVar,
-		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
-		C3.Plugins.Arr.Exps.AsJSON,
-		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
+		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
 		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
+		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Sprite.Exps.X,
@@ -4661,6 +4660,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Arr.Cnds.CompareXY,
@@ -5027,12 +5027,6 @@ self.C3_ExpressionFuncs = [
 		() => "ListFigurHost",
 		() => "ListFigurPeer",
 		() => "MassivLuch",
-		() => "",
-		() => "LoadFigurOpponent",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject();
-		},
 		() => 0,
 		p => {
 			const n0 = p._GetNode(0);
@@ -5040,10 +5034,15 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject((v1.GetValue() - 1));
 		},
 		() => 1,
+		() => "",
 		() => "OpponentPriziv",
 		() => "priziv",
 		() => "СОЗДАНИЕ",
 		() => "Shetony",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject();
+		},
 		() => 115.2,
 		p => {
 			const n0 = p._GetNode(0);
@@ -5349,6 +5348,7 @@ self.C3_ExpressionFuncs = [
 		() => "Host",
 		() => "Peer",
 		() => 180,
+		() => "LoadFigurOpponent",
 		() => "loadName",
 		() => "loadIcon",
 		p => {
