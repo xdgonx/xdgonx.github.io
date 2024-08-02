@@ -4621,30 +4621,37 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
 		C3.Plugins.System.Cnds.CompareBoolVar,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Arr.Cnds.ArrForEach,
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.Arr.Cnds.CompareXY,
+		C3.Plugins.Arr.Exps.CurX,
+		C3.Plugins.Arr.Exps.CurY,
+		C3.Plugins.System.Acts.CreateObject,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
+		C3.Plugins.Arr.Exps.At,
+		C3.Plugins.Sprite.Acts.SetSize,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
+		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Sprite.Exps.Y,
+		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.Sprite.Acts.SetVisible,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
-		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.Arr.Acts.Pop,
 		C3.Plugins.System.Acts.SetVar,
-		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
-		C3.Plugins.System.Acts.CreateObject,
-		C3.Plugins.Sprite.Exps.X,
-		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
-		C3.Plugins.Sprite.Acts.SetSize,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Cnds.PickByUID,
 		C3.Plugins.Sprite.Acts.SetPos,
-		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Sprite.Exps.Width,
@@ -4653,19 +4660,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
-		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.System.Cnds.ForEachOrdered,
-		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.Text.Acts.SetVisible,
-		C3.Plugins.Arr.Cnds.ArrForEach,
-		C3.Plugins.Arr.Cnds.CompareXY,
-		C3.Plugins.Arr.Exps.CurX,
-		C3.Plugins.Arr.Exps.CurY,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
@@ -5027,23 +5027,51 @@ self.C3_ExpressionFuncs = [
 		() => "ListFigurHost",
 		() => "MassivLuch",
 		() => "ListFigurPeer",
+		() => 1,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject();
+		},
+		() => 10,
+		() => "Shetony",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (106 + (n0.ExpObject() * 124));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (486 + (n0.ExpObject() * 124));
+		},
+		() => "",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => subtract(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10);
+		},
+		() => 115.2,
+		() => -10,
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => multiply(add(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10), (-1));
+		},
+		() => 610,
+		() => 230,
+		() => 478,
+		() => 602,
+		() => 850,
+		() => 1230,
 		() => 0,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => n0.ExpObject((v1.GetValue() - 1));
 		},
-		() => 1,
-		() => "",
 		() => "OpponentPriziv",
 		() => "priziv",
 		() => "СОЗДАНИЕ",
-		() => "Shetony",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject();
-		},
-		() => 115.2,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
@@ -5102,39 +5130,11 @@ self.C3_ExpressionFuncs = [
 		() => 80,
 		() => "SbrosMy",
 		() => "SbrosOpponent",
-		() => 10,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(0);
 		},
 		() => "Array",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (106 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (486 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			return () => subtract(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10);
-		},
-		() => -10,
-		p => {
-			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			return () => multiply(add(n0.ExpObject(n1.ExpObject(), n2.ExpObject()), 10), (-1));
-		},
-		() => 610,
-		() => 230,
-		() => 478,
-		() => 602,
-		() => 850,
-		() => 1230,
 		() => "Create",
 		() => "create",
 		p => {
