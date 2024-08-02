@@ -5204,6 +5204,9 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (486 + (v0.GetValue() * 124));
 		},
+		() => "ZahvatOpponent",
+		() => "zahvat",
+		() => "ZahvatMy",
 		() => "Тест",
 		() => "Удаление Жетона С Поля",
 		() => "Какие айди у клеток поля",
