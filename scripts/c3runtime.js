@@ -4620,10 +4620,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
+		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
-		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Arr.Exps.At,
@@ -5025,8 +5025,8 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "ArrayPer",
 		() => "ListFigurHost",
-		() => "ListFigurPeer",
 		() => "MassivLuch",
+		() => "ListFigurPeer",
 		() => 0,
 		p => {
 			const n0 = p._GetNode(0);
