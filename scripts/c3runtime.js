@@ -5348,7 +5348,6 @@ self.C3_ExpressionFuncs = [
 		() => "Host",
 		() => "Peer",
 		() => 180,
-		() => "LoadFigurOpponent",
 		() => "loadName",
 		() => "loadIcon",
 		p => {
@@ -5356,6 +5355,7 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1());
 		},
+		() => "LoadFigurOpponent",
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
