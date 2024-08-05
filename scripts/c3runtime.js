@@ -4687,6 +4687,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Exps.CurValue,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.ResetGlobals,
+		C3.Plugins.Multiplayer.Acts.DisconnectRoom,
 		C3.Plugins.Multiplayer.Acts.SignallingDisconnect,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.Sprite.Exps.IID,
