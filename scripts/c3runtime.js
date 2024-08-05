@@ -4687,8 +4687,17 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals,
+		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
+		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
+		C3.Plugins.Multiplayer.Exps.Message,
+		C3.Plugins.System.Exps.int,
+		C3.Plugins.Button.Cnds.OnClicked,
+		C3.Plugins.TextBox.Cnds.CompareText,
+		C3.Plugins.TextBox.Exps.Text,
+		C3.Plugins.System.Acts.SetGroupActive,
+		C3.Plugins.TextBox.Acts.SetBlur,
 		C3.Plugins.Multiplayer.Acts.SignallingConnect,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingConnected,
 		C3.Plugins.Multiplayer.Acts.SignallingLogin,
@@ -4696,16 +4705,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Acts.SignallingAutoJoinRoom,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingJoinedRoom,
 		C3.Plugins.Multiplayer.Cnds.IsHost,
-		C3.Plugins.System.Acts.SetGroupActive,
-		C3.Plugins.Sprite.Acts.SetAngle,
-		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
-		C3.Plugins.Multiplayer.Exps.Message,
-		C3.Plugins.System.Exps.int,
-		C3.Plugins.Button.Cnds.OnClicked,
-		C3.Plugins.TextBox.Cnds.CompareText,
-		C3.Plugins.TextBox.Exps.Text,
-		C3.Plugins.System.Acts.GoToLayout,
-		C3.Plugins.TextBox.Acts.SetBlur
+		C3.Plugins.Sprite.Acts.SetAngle
 	];
 };
 self.C3_JsPropNameTable = [
@@ -5347,14 +5347,7 @@ self.C3_ExpressionFuncs = [
 		() => 858,
 		() => "ВЫБРАТЬ ФИГУРУ КОТОРАЯ ОТПРАВИТСЯ В ПЛЕН СО СТОЛА",
 		() => "МУЛЬТИПЛЕЕР",
-		() => "Signaling",
-		() => "wss://multiplayer.construct.net",
-		() => "UniqueUnitsBattleBotGame",
-		() => "MainBranch",
-		() => "UniUniRoom",
 		() => "Host",
-		() => "Peer",
-		() => 180,
 		() => "loadName",
 		() => "loadIcon",
 		p => {
@@ -5369,7 +5362,14 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
 		},
-		() => "Dgon"
+		() => "Peer",
+		() => "Dgon",
+		() => "Signaling",
+		() => "wss://multiplayer.construct.net",
+		() => "UniqueUnitsBattleBotGame",
+		() => "MainBranch",
+		() => "UniUniRoom",
+		() => 180
 ];
 
 
