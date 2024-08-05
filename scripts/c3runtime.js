@@ -5120,6 +5120,10 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => (v0.GetValue() - v1.GetValue());
 		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
+		},
 		() => 540,
 		() => 1806,
 		() => 366.8,
@@ -5141,10 +5145,6 @@ self.C3_ExpressionFuncs = [
 			return () => (840 + ((v0.GetValue() * 56.8) * (-1)));
 		},
 		() => 76.8,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => v0.GetValue();
-		},
 		() => 5,
 		() => "PlenMy",
 		p => {
