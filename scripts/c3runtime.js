@@ -4621,6 +4621,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
 		C3.Plugins.System.Cnds.CompareBoolVar,
+		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Arr.Cnds.ArrForEach,
@@ -4687,7 +4688,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Plugins.System.Acts.RestartLayout,
-		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
 		C3.Plugins.Multiplayer.Acts.SignallingConnect,
@@ -4816,6 +4816,7 @@ self.C3_JsPropNameTable = [
 	{isPeer: 0},
 	{NowPlayPlayer: 0},
 	{CreateFigur: 0},
+	{gameRestart: 0},
 	{Load: 0},
 	{delX: 0},
 	{delY: 0},
@@ -5237,6 +5238,7 @@ self.C3_ExpressionFuncs = [
 		() => -717706215031807,
 		() => 1130,
 		() => -43805311999,
+		() => "FoundOpponent",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 1);
@@ -5362,7 +5364,6 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1());
 		},
-		() => "FoundOpponent",
 		() => "LoadFigurOpponent",
 		p => {
 			const n0 = p._GetNode(0);
