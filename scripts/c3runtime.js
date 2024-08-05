@@ -4647,9 +4647,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
-		C3.Plugins.System.Acts.SetVar,
-		C3.Plugins.Date.Exps.GetUTCSeconds,
-		C3.Plugins.Date.Exps.Now,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.CompareVar,
@@ -4669,6 +4666,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.System.Cnds.EveryTick,
+		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.Date.Exps.GetUTCSeconds,
+		C3.Plugins.Date.Exps.Now,
+		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.System.Acts.SetBoolVar,
@@ -4681,7 +4682,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Multiplayer.Acts.HostBroadcastMessage,
 		C3.Plugins.Multiplayer.Acts.SendPeerMessage,
-		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.Text.Acts.SetVisible,
@@ -5067,11 +5067,6 @@ self.C3_ExpressionFuncs = [
 		() => "ArrayPer",
 		() => "ListFigurHost",
 		() => "MassivLuch",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (f0(f1()) + 10);
-		},
 		() => "ListFigurPeer",
 		() => 1,
 		p => {
@@ -5110,6 +5105,11 @@ self.C3_ExpressionFuncs = [
 		() => 850,
 		() => 1230,
 		() => 0,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0(f1()) + 10);
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
