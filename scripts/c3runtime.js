@@ -5070,7 +5070,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (f0(f1()) + 40);
+			return () => (f0(f1()) + 10);
 		},
 		() => "ListFigurPeer",
 		() => 1,
