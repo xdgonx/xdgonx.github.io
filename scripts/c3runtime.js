@@ -5407,10 +5407,10 @@ self.C3_ExpressionFuncs = [
 		() => "Name",
 		() => "AvatarChoose",
 		p => {
-			const n0 = p._GetNode(0);
-			const v1 = p._GetNode(1).GetVar();
-			return () => (n0.ExpObject() + (200 * (v1.GetValue() - 1)));
+			const v0 = p._GetNode(0).GetVar();
+			return () => (246 + (200 * (v0.GetValue() - 1)));
 		},
+		() => 820,
 		() => "Dgon"
 ];
 
