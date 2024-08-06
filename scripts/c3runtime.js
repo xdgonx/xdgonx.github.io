@@ -4735,7 +4735,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.TextBox.Cnds.CompareText,
 		C3.Plugins.TextBox.Exps.Text,
 		C3.Plugins.LocalStorage.Acts.SetItem,
-		C3.Plugins.TextBox.Acts.SetBlur
+		C3.Plugins.TextBox.Acts.SetBlur,
+		C3.Plugins.System.Acts.SetLayoutScale,
+		C3.Plugins.System.Acts.SetLayoutVanishingPoint
 	];
 };
 self.C3_JsPropNameTable = [
@@ -5404,7 +5406,8 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
 		},
 		() => "Name",
-		() => "Dgon"
+		() => "Dgon",
+		() => 50
 ];
 
 
