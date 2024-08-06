@@ -4731,13 +4731,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
 		C3.Plugins.LocalStorage.Exps.ItemValue,
 		C3.Plugins.TextBox.Acts.SetText,
+		C3.Plugins.LocalStorage.Acts.SetItem,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.TextBox.Cnds.CompareText,
+		C3.Plugins.TextBox.Cnds.IsFocused,
 		C3.Plugins.TextBox.Exps.Text,
-		C3.Plugins.LocalStorage.Acts.SetItem,
-		C3.Plugins.TextBox.Acts.SetBlur,
-		C3.Plugins.System.Acts.SetLayoutScale,
-		C3.Plugins.System.Acts.SetLayoutVanishingPoint
+		C3.Plugins.TextBox.Acts.SetBlur
 	];
 };
 self.C3_JsPropNameTable = [
@@ -5406,8 +5405,13 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
 		},
 		() => "Name",
-		() => "Dgon",
-		() => 50
+		() => "AvatarChoose",
+		p => {
+			const n0 = p._GetNode(0);
+			const v1 = p._GetNode(1).GetVar();
+			return () => (n0.ExpObject() + (200 * (v1.GetValue() - 1)));
+		},
+		() => "Dgon"
 ];
 
 
