@@ -4671,8 +4671,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.GoToLayout,
-		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Text.Cnds.CompareText,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Arr.Cnds.CompareXY,
@@ -4688,7 +4689,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.System.Cnds.Every,
-		C3.Plugins.Text.Cnds.CompareText,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
@@ -5107,6 +5107,7 @@ self.C3_ExpressionFuncs = [
 		() => "MassivLuch",
 		() => "ListFigurPeer",
 		() => "FoundOpponent",
+		() => "Opponent",
 		() => 1,
 		p => {
 			const n0 = p._GetNode(0);
@@ -5144,7 +5145,6 @@ self.C3_ExpressionFuncs = [
 		() => 850,
 		() => 1230,
 		() => 0,
-		() => "Opponent",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
