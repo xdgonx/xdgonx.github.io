@@ -4906,6 +4906,7 @@ self.C3_JsPropNameTable = [
 	{Room: 0},
 	{PirSendMessageFirstTime: 0},
 	{Chance: 0},
+	{Chance2: 0},
 	{Login: 0},
 	{isMultiplayerOn: 0},
 	{Avatarka: 0}
@@ -5144,12 +5145,15 @@ self.C3_ExpressionFuncs = [
 		() => 602,
 		() => 850,
 		() => 1230,
+		() => 2,
+		() => 354,
+		() => 726,
 		() => 0,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => 30,
+		() => 40,
 		() => 80,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5178,7 +5182,6 @@ self.C3_ExpressionFuncs = [
 		() => 3,
 		() => -717716349088767,
 		() => 110,
-		() => 2,
 		() => -717711533733887,
 		() => 120,
 		() => -717706215031807,
@@ -5277,6 +5280,7 @@ self.C3_ExpressionFuncs = [
 		() => 680,
 		() => 270,
 		() => "РАБОТА С ЗАХВАТИВШИМИ",
+		() => 30,
 		() => 10349.9437,
 		() => 349.9437,
 		() => "РАБОТА С КНОПКАМИ ОТМЕНА И ДЕЙСТВИЯ",
@@ -5398,7 +5402,6 @@ self.C3_ExpressionFuncs = [
 		() => 1113.6,
 		() => 1170.4,
 		() => 1227.2,
-		() => 40,
 		() => 1284,
 		() => 11,
 		() => 12,
@@ -5451,6 +5454,7 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(1, 2);
 		},
+		() => "ChangeMap",
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
