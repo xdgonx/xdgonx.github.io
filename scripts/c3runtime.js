@@ -4687,7 +4687,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Exps.X,
-		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.Text.Cnds.CompareText,
 		C3.Plugins.System.Acts.SetVar,
@@ -4709,6 +4708,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.System.Cnds.ForEachOrdered,
+		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
@@ -5143,7 +5143,6 @@ self.C3_ExpressionFuncs = [
 		() => 602,
 		() => 850,
 		() => 1230,
-		() => 3,
 		() => 0,
 		() => "Opponent",
 		p => {
@@ -5176,6 +5175,7 @@ self.C3_ExpressionFuncs = [
 		() => -717725963020287,
 		() => 4,
 		() => -717721147665407,
+		() => 3,
 		() => -717716349088767,
 		() => 110,
 		() => 2,
@@ -5207,6 +5207,8 @@ self.C3_ExpressionFuncs = [
 		() => "PlenMy",
 		() => "PlenOpponent",
 		() => "SbrosOpponent",
+		() => "GameEnd",
+		() => "end",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(0);
