@@ -5446,6 +5446,7 @@ self.C3_ExpressionFuncs = [
 			return () => f0(f1());
 		},
 		() => "LoadFigurOpponent",
+		() => "Change",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(1, 2);
@@ -5466,6 +5467,7 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (920 + (920 - f0(f1())));
 		},
+		() => "choose",
 		() => "Name",
 		() => "AvatarChoose",
 		p => {
