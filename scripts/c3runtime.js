@@ -4642,6 +4642,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Arr.Acts.Shuffle,
 		C3.Plugins.System.Cnds.CompareBoolVar,
+		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
@@ -4702,11 +4703,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.Plugins.Touch.Cnds.OnDoubleTapGestureObject,
-		C3.Plugins.System.Cnds.Every,
-		C3.Plugins.Text.Acts.Destroy,
-		C3.Plugins.Arr.Exps.CurValue,
-		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Plugins.Multiplayer.Acts.SignallingLeaveRoom,
 		C3.Plugins.Multiplayer.Acts.DisconnectRoom,
@@ -4726,6 +4722,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.System.Exps.int,
+		C3.Plugins.Sprite.Acts.SetX,
+		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected,
 		C3.Plugins.LocalStorage.Acts.GetItem,
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
@@ -4830,6 +4828,11 @@ self.C3_JsPropNameTable = [
 	{o_sPrizivVrag: 0},
 	{Multiplayer: 0},
 	{LocalData: 0},
+	{newPositionX: 0},
+	{newPositionY: 0},
+	{s_Krest: 0},
+	{s_KrestOpponent: 0},
+	{o_sButtonZacicliv: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4950,7 +4953,10 @@ self.InstanceType = {
 	s_VosklZnakChooseen: class extends self.ISpriteInstance {},
 	o_sPrizivVrag: class extends self.ISpriteInstance {},
 	Multiplayer: class extends self.IInstance {},
-	LocalData: class extends self.IInstance {}
+	LocalData: class extends self.IInstance {},
+	s_Krest: class extends self.ISpriteInstance {},
+	s_KrestOpponent: class extends self.ISpriteInstance {},
+	o_sButtonZacicliv: class extends self.ISpriteInstance {}
 }
 }
 
@@ -5061,6 +5067,7 @@ self.C3_ExpressionFuncs = [
 		() => "ListFigurHost",
 		() => "MassivLuch",
 		() => "ListFigurPeer",
+		() => "FoundOpponent",
 		() => 1,
 		p => {
 			const n0 = p._GetNode(0);
@@ -5133,7 +5140,19 @@ self.C3_ExpressionFuncs = [
 		() => 1723,
 		() => 251.52,
 		() => "ДЕЙСТВИЕ",
+		() => "KrestNewPositionX",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar()).toString();
+		},
+		() => "KrestNewPositionY",
 		() => 3,
+		() => "KrestX",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject()).toString();
+		},
+		() => "KrestY",
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
@@ -5144,6 +5163,7 @@ self.C3_ExpressionFuncs = [
 		() => 540,
 		() => 1806,
 		() => 366.8,
+		() => -100,
 		() => 1000,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5247,31 +5267,6 @@ self.C3_ExpressionFuncs = [
 		() => "ZahvatOpponent",
 		() => "zahvat",
 		() => "ZahvatMy",
-		() => "Тест",
-		() => "Удаление Жетона С Поля",
-		() => "Какие айди у клеток поля",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (95 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (457 + (n0.ExpObject() * 124));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (487 + (n0.ExpObject() * 124));
-		},
-		() => "Какие фигуры в мешке",
-		() => -50,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (530 + (n0.ExpObject() * 40));
-		},
-		() => -717706215031807,
-		() => 1130,
-		() => -43805311999,
-		() => "FoundOpponent",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 1);
@@ -5403,6 +5398,16 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			const n2 = p._GetNode(2);
 			return () => n0.ExpObject(n1.ExpObject(), n2.ExpObject());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (540 + (540 - f0(f1())));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (920 + (920 - f0(f1())));
 		},
 		() => "Name",
 		() => "AvatarChoose",
