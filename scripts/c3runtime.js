@@ -4757,6 +4757,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected,
+		C3.Plugins.Sprite.Exps.Opacity,
 		C3.Plugins.LocalStorage.Acts.GetItem,
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
 		C3.Plugins.LocalStorage.Exps.ItemValue,
@@ -4867,6 +4868,8 @@ self.C3_JsPropNameTable = [
 	{o_sButtonZacicliv: 0},
 	{o_tTime: 0},
 	{Date: 0},
+	{s_smailik: 0},
+	{s_smailikCreate: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4888,6 +4891,7 @@ self.C3_JsPropNameTable = [
 	{gameRestart: 0},
 	{currentTime: 0},
 	{countDownTime: 0},
+	{TimerSmailik: 0},
 	{Load: 0},
 	{delX: 0},
 	{delY: 0},
@@ -4996,7 +5000,9 @@ self.InstanceType = {
 	s_KrestOpponent: class extends self.ISpriteInstance {},
 	o_sButtonZacicliv: class extends self.ISpriteInstance {},
 	o_tTime: class extends self.ITextInstance {},
-	Date: class extends self.IInstance {}
+	Date: class extends self.IInstance {},
+	s_smailik: class extends self.ISpriteInstance {},
+	s_smailikCreate: class extends self.ISpriteInstance {}
 }
 }
 
@@ -5455,6 +5461,7 @@ self.C3_ExpressionFuncs = [
 			return () => f0(1, 2);
 		},
 		() => "ChangeMap",
+		() => "Smile",
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
@@ -5472,6 +5479,11 @@ self.C3_ExpressionFuncs = [
 			return () => (920 + (920 - f0(f1())));
 		},
 		() => "choose",
+		() => "СМАЙЛИКИ",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 0.5);
+		},
 		() => "Name",
 		() => "AvatarChoose",
 		p => {
