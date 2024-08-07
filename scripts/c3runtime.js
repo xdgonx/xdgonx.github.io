@@ -4757,6 +4757,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected,
+		C3.Plugins.Multiplayer.Cnds.OnHostDisconnected,
 		C3.Plugins.LocalStorage.Acts.GetItem,
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
 		C3.Plugins.LocalStorage.Exps.ItemValue,
