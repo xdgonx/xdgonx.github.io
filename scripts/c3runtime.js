@@ -4750,6 +4750,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Multiplayer.Cnds.IsHost,
 		C3.Plugins.System.Acts.SetGroupActive,
 		C3.Plugins.Sprite.Acts.SetAngle,
+		C3.Plugins.Multiplayer.Cnds.OnPeerConnected,
 		C3.Plugins.Multiplayer.Cnds.OnPeerMessage,
 		C3.Plugins.Multiplayer.Exps.Message,
 		C3.Plugins.System.Exps.int,
@@ -4758,6 +4759,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.Multiplayer.Cnds.OnPeerDisconnected,
 		C3.Plugins.Sprite.Exps.Opacity,
+		C3.Plugins.Sprite.Acts.SetAnimSpeed,
 		C3.Plugins.LocalStorage.Acts.GetItem,
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
 		C3.Plugins.LocalStorage.Exps.ItemValue,
@@ -4870,6 +4872,7 @@ self.C3_JsPropNameTable = [
 	{Date: 0},
 	{s_smailik: 0},
 	{s_smailikCreate: 0},
+	{s_animationLoad: 0},
 	{ButtonWork: 0},
 	{FigurHost: 0},
 	{Map: 0},
@@ -4892,6 +4895,7 @@ self.C3_JsPropNameTable = [
 	{currentTime: 0},
 	{countDownTime: 0},
 	{TimerSmailik: 0},
+	{TimeAnimation: 0},
 	{Load: 0},
 	{delX: 0},
 	{delY: 0},
@@ -5002,7 +5006,8 @@ self.InstanceType = {
 	o_tTime: class extends self.ITextInstance {},
 	Date: class extends self.IInstance {},
 	s_smailik: class extends self.ISpriteInstance {},
-	s_smailikCreate: class extends self.ISpriteInstance {}
+	s_smailikCreate: class extends self.ISpriteInstance {},
+	s_animationLoad: class extends self.ISpriteInstance {}
 }
 }
 
@@ -5445,6 +5450,8 @@ self.C3_ExpressionFuncs = [
 		() => "MainBranch",
 		() => "UniUniRoom",
 		() => "Host",
+		() => "Загрузка...",
+		() => "load",
 		() => "Peer",
 		() => 180,
 		() => "loadName",
